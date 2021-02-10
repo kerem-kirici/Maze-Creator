@@ -90,7 +90,7 @@ class Maze:
         if self.show:
             #print(f"end_point: {self.end_point}, end_point_distance: {self.end_point_distance}, current_distance: {self.distance}")
             cv2.imshow("image", img)
-            cv2.waitKey(self.animation)
+            cv2.waitKey(int(self.animation))
 
     def create_maze(self):
         done = False
