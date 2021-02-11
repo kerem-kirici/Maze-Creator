@@ -60,7 +60,7 @@ class Maze:
 
     def render(self):
         img_size = (self.grid_size[0]*self.render_quality, self.grid_size[1]*self.render_quality)
-        env_image = np.zeros((img_size[0], img_size[1], 3), dtype=np.uint8)
+        env_image = np.full(shape=(img_size[0], img_size[1], 3), fill_value=self.colors[self.keys["wall"]], dtype=np.uint8)
 
         for i in range(img_size[0]):
             for j in range(img_size[1]):
@@ -72,8 +72,6 @@ class Maze:
                         env_image[i][j] = self.colors["end"]
                     else:
                         env_image[i][j] = self.colors[self.keys["road"]]
-                else:
-                    env_image[i][j] = self.colors[self.keys["wall"]]
 
         img = Image.fromarray(env_image, "RGB")
         resize_shape = [self.grid_size[0]*self.image_resize_constant, self.grid_size[1]*self.image_resize_constant]
